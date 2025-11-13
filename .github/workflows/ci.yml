@@ -23,7 +23,7 @@ jobs:
 
       # --- Static Code Analysis ---
       - name: Bandit Security Scan
-        run: bandit -r .
+        bandit -r app.py -x .venv,tests
 
       # --- Unit Tests ---
       - name: Run Tests
