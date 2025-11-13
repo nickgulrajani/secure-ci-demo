@@ -8,23 +8,27 @@ on:
 jobs:
   build-test-scan:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - uses: actions/checkout@v4
+      # --- Checkout code ---
+      - name: Checkout
+        uses: actions/checkout@v4
 
       # --- Python Setup ---
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
 
       - name: Install dependencies
         run: |
-          pip install flask pytest bandit safety
+          pip install flask pytest bandit safety checkov
 
-      # --- Static Code Analysis ---
+      # --- Static Code Analysis (SAST) ---
       - name: Bandit Security Scan
-       run: bandit app.py
-  
+        run: |
+          echo "Running Bandit only on app.py..."
+          bandit app.py
 
       # --- Unit Tests ---
       - name: Run Tests
@@ -50,4 +54,3 @@ jobs:
       # --- Checkov IaC Scan (optional) ---
       - name: Checkov IaC Scan
         run: checkov -d infra || true
-
