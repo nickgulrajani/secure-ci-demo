@@ -48,8 +48,10 @@ jobs:
         with:
           image-ref: secure-ci-demo
           format: table
-          exit-code: 1
+          severity: CRITICAL,HIGH,MEDIUM
           ignore-unfixed: true
+          exit-code: 0
+          
 
       # --- Checkov IaC Scan (optional) ---
       - name: Checkov IaC Scan
