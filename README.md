@@ -1,5 +1,6 @@
 # Secure CI/CD Pipeline Demo (Use Case #2)
 
+ADD COMMENTS 
 **Goal:** Demonstrate a modern DevSecOps pipeline with security and quality gates, using a tiny Flask app, Docker, and scanners — all runnable locally or via GitHub Actions with **zero cloud cost**.
 
 ## What this repo shows
